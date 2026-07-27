@@ -31,3 +31,4 @@ terraform.rc
 .DS_Store
 *.swp
 *.pem
+*test.tf
