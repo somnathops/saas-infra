@@ -49,12 +49,12 @@ variable "description" {
 
 variable "ingress_rules" {
   description = "The ingress rules for the security group."
-  type        = list(object({
-    from_port = number
-    to_port   = number
-    protocol  = string
-    cidr_ipv4 = optional(string)
-    description = optional(string)
+  type = list(object({
+    from_port                    = number
+    to_port                      = number
+    protocol                     = string
+    cidr_ipv4                    = optional(string)
+    description                  = optional(string)
     referenced_security_group_id = optional(string)
   }))
   default = []
@@ -62,12 +62,12 @@ variable "ingress_rules" {
 
 variable "egress_rules" {
   description = "The egress rules for the security group."
-  type        = list(object({
-    from_port = number
-    to_port   = number
-    protocol  = string
-    cidr_ipv4 = optional(string)
-    description = optional(string)
+  type = list(object({
+    from_port                    = number
+    to_port                      = number
+    protocol                     = string
+    cidr_ipv4                    = optional(string)
+    description                  = optional(string)
     referenced_security_group_id = optional(string)
   }))
   default = []
