@@ -27,11 +27,11 @@ variable "common_tags" {
     type        = map(string)
 }
 
-variable "nat_gateway_mode" {
-    description = "NAT GW dployment mode"
-    type       = string
-    validation {
-      condition = contains(["single", "per_az"], var.nat_gateway_mode)
-      error_message = "nat_gateway_mode must be either 'single' or 'per_az'"
-    }
-}
+# # variable "nat_gateway_mode" {
+# #     description = "NAT GW dployment mode"
+# #     type       = string
+# #     validation {
+# #       condition = contains(["single", "per_az"], var.nat_gateway_mode)
+# #       error_message = "nat_gateway_mode must be either 'single' or 'per_az'"
+# #     }
+# }

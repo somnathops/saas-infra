@@ -24,7 +24,7 @@ locals {
     slice(local.azs, 0, length(local.private_subnet_keys))
   )
 
-  nat_gateway_subnets = var.nat_gateway_mode == "single" ? {
-    (local.public_subnet_keys[0]) = var.public_subnets[local.public_subnet_keys[0]]
-  } : var.public_subnets
+  # nat_gateway_subnets = var.nat_gateway_mode == "single" ? {
+  #   (local.public_subnet_keys[0]) = var.public_subnets[local.public_subnet_keys[0]]
+  # } : var.public_subnets
 }

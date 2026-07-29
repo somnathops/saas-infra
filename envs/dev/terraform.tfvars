@@ -22,4 +22,4 @@ private_subnets = {
 common_tags = {
   Environment = "dev"
 }
-nat_gateway_mode = "single"
+# nat_gateway_mode = "single"
