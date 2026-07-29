@@ -23,3 +23,5 @@ common_tags = {
   Environment = "dev"
 }
 # nat_gateway_mode = "single"
+
+security_group_name = "dev-sg"
