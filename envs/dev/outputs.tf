@@ -10,10 +10,6 @@ output "private_subnet_ids" {
   value = module.vpc.private_subnet_ids
 }
 
-output "nat_gateway_ids" {
-  value = module.vpc.nat_gateway_ids
-}
-
 output "internet_gateway_id" {
   value = module.vpc.internet_gateway_id
 }
