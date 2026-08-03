@@ -1,12 +1,19 @@
-name: Terraform CI
+name: Networking CI
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'networking/**'
+      - 'modules/vpc/**'
+
   pull_request:
     branches:
       - main
+    paths:
+      - 'networking/**'
+      - 'modules/vpc/**'
   workflow_dispatch:
 
 jobs:
@@ -15,7 +22,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: envs/dev
+        working-directory: networking/envs/dev
 
     steps:
       - name: Checkout repository
