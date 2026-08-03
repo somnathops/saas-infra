@@ -2,29 +2,15 @@ locals {
   common_tags = merge(
     var.common_tags,
     {
-        managedBy = "terraform"
+      managedBy = "terraform"
     }
   )
-}
 
-locals {
-  azs = data.aws_availability_zones.available.names
+  azs     = data.aws_availability_zones.available.names
+  newbits = var.subnet_prefix - tonumber(split("/", var.vpc_cidr)[1])
+  public_subnets = {
+    for index, az in local.azs :
+    az => cidrsubnet(var.vpc_cidr, local.newbits, index)
+  }
 
-  public_subnet_keys = sort(keys(var.public_subnets))
-
-  public_subnet_az_map = zipmap(
-    local.public_subnet_keys,
-    slice(local.azs, 0, length(local.public_subnet_keys))
-  )
-
-  private_subnet_keys = sort(keys(var.private_subnets))
-
-  private_subnet_az_map = zipmap(
-    local.private_subnet_keys,
-    slice(local.azs, 0, length(local.private_subnet_keys))
-  )
-
-  # nat_gateway_subnets = var.nat_gateway_mode == "single" ? {
-  #   (local.public_subnet_keys[0]) = var.public_subnets[local.public_subnet_keys[0]]
-  # } : var.public_subnets
 }

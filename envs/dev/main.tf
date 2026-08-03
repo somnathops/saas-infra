@@ -1,33 +1,27 @@
-module "vpc" {
+module "vpc_use1" {
+  providers = {
+    aws = aws.use1
+  }
+
   source = "../../modules/vpc"
 
-  vpc_name        = var.vpc_name
-  vpc_cidr        = var.vpc_cidr
-  public_subnets  = var.public_subnets
-  private_subnets = var.private_subnets
-  # nat_gateway_mode = var.nat_gateway_mode
+  vpc_name      = var.regions["us-east-1"].vpc_name
+  vpc_cidr      = var.regions["us-east-1"].vpc_cidr
+  subnet_prefix = var.regions["us-east-1"].subnet_prefix
+
   common_tags = var.common_tags
 }
 
-module "security_group" {
-  source = "../../modules/security-group"
+module "vpc_euc1" {
+  providers = {
+    aws = aws.euc1
+  }
 
-  security_group_name = var.security_group_name
-  vpc_id              = module.vpc.vpc_id
-  description         = var.description
-  ingress_rules       = var.ingress_rules
-  egress_rules        = var.egress_rules
-}
+  source = "../../modules/vpc"
 
-module "ec2_role" {
-  source = "../../modules/iam"
+  vpc_name      = var.regions["eu-central-1"].vpc_name
+  vpc_cidr      = var.regions["eu-central-1"].vpc_cidr
+  subnet_prefix = var.regions["eu-central-1"].subnet_prefix
 
-  name                = "gfti-dev-ec2-role"
-  assume_role_service = ["ec2.amazonaws.com"]
-  policy_arns = [
-    "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
-    "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
-  ]
-  create_instance_profile = true
-  tags                    = merge(var.common_tags, { "Name" = "gfti-dev-ec2-role" })
+  common_tags = var.common_tags
 }
