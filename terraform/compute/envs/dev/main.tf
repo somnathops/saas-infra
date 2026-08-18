@@ -8,7 +8,7 @@ module "security_group" {
       from_port   = 22
       to_port     = 22
       protocol    = "tcp"
-      cidr_blocks = ["122.168.71.80/32"]
+      cidr_ipv4 = ["122.168.71.80/32"]
     },
   ]
 }
