@@ -1,19 +1,14 @@
+variable "region" {
+    description = "The AWS region to deploy resources in."
+    type        = string
+}
+
 variable "tenant_id" {
-    description = "The tenant ID for the AWS account."
+    description = "Id of the tenant for which the resources are being created"
     type        = string  
 }
-variable "ami_id" {
-    description = "The AMI ID to use for the EC2 instance."
-    type        = string
-}
-
 variable "instance_type" {
     description = "The type of instance to use for the EC2 instance."
-    type        = string
-}
-
-variable "subnet_id" {
-    description = "The subnet ID to launch the EC2 instance in."
     type        = string
 }
 
@@ -31,11 +26,6 @@ variable "associate_public_ip_address" {
     description = "Whether to associate a public IP address with the EC2 instance."
     type        = bool
     default     = false
-}
-
-variable "iam_instance_profile" {
-    description = "The name of the IAM instance profile to associate with the EC2 instance."
-    type        = string
 }
 
 variable "tags" {

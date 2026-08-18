@@ -1,7 +1,3 @@
-variable "tenant_id" {
-    description = "The tenant ID for the AWS account."
-    type        = string  
-}
 variable "ami_id" {
     description = "The AMI ID to use for the EC2 instance."
     type        = string
@@ -31,11 +27,6 @@ variable "associate_public_ip_address" {
     description = "Whether to associate a public IP address with the EC2 instance."
     type        = bool
     default     = false
-}
-
-variable "iam_instance_profile" {
-    description = "The name of the IAM instance profile to associate with the EC2 instance."
-    type        = string
 }
 
 variable "tags" {

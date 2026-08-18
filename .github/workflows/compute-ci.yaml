@@ -1,0 +1,64 @@
+name: Compute CI
+on:
+  workflow_dispatch:
+    inputs:
+      region:
+        description: 'AWS Region'
+        required: true
+
+      instance_type:
+        description: 'EC2 Instance Type'
+        required: true
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: saas-infra/terraform/compute/envs/dev
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.14.0
+
+      - name: Generate Tenant ID
+        id: tenant
+        run: |
+          TENANT_ID=$(uuidgen | tr '[:upper:]' '[:lower:]' | cut -d '-' -)
+          echo "TENANT_ID=$TENANT_ID" >> $GITHUB_OUTPUT
+          echo "Generated Tenant ID: $TENANT_ID"
+
+      - name: Terraform Init
+        run: |
+          terraform init \
+            -backend-config="bucket=s3-terraform-state-12345" \
+            -backend-config="key=tenants/${{ steps.tenant.outputs.tenant_id }}/terraform.tfstate" \
+            -backend-config="region=ap-south-1"
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        run: |
+          terraform plan \
+            -input=false \
+            -no-color \
+            -var="region=${{ inputs.region }}" \
+            -var="instance_type=${{ inputs.instance_type }}" \
+            -var="tenant_id=${{ steps.tenant.outputs.tenant_id }}"
+
+      - name: Terraform Apply
+        run: |
+          terraform apply \
+            -input=false \
+            -auto-approve \
+            -var="region=${{ inputs.region }}" \
+            -var="instance_type=${{ inputs.instance_type }}" \
+            -var="tenant_id=${{ steps.tenant.outputs.tenant_id }}"

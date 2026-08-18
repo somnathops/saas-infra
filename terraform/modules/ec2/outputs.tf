@@ -9,9 +9,6 @@ output "instance_public_ip" {
 output "instance_private_ip" {
   value = aws_instance.this.private_ip
 }
-output "instance_name" {
-  value = local.instance_name
-}
 
 output "instance_arn" {
   value = aws_instance.this.arn
