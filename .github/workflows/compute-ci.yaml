@@ -28,7 +28,7 @@ jobs:
       - name: Generate Tenant ID
         id: tenant
         run: |
-          TENANT_ID=$(uuidgen | tr '[:upper:]' '[:lower:]' | cut -d '-' -)
+          TENANT_ID=$(uuidgen | tr '[:upper:]' '[:lower:]' | cut -d '-' -f1)
           echo "TENANT_ID=$TENANT_ID" >> $GITHUB_OUTPUT
           echo "Generated Tenant ID: $TENANT_ID"
 
