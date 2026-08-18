@@ -27,7 +27,8 @@ module "ec2" {
   key_name                    = var.key_name
   associate_public_ip_address = var.associate_public_ip_address
   tags = merge(var.tags,
-    { "Name"      = "tenant-${random_id.tenant_id.hex}"
+    {
       "ManagedBy" = "Terraform"
-  })
+    }
+  )
 }
