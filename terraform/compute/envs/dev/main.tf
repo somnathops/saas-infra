@@ -18,14 +18,9 @@ resource "random_integer" "az" {
   max = length(local.available_azs) - 1
 }
 
-resource "random_id" "tenant_id" {
-  byte_length = 4
-}
-
-module "ec2_instance" {
-  source = "../../../modules/ec2-instance"
+module "ec2" {
+  source = "../../../modules/ec2"
   ami_id                     = data.aws_ami.ubuntu.id
-  tenant_id                  = random_id.tenant_id.hex
   subnet_id                  = local.subnet_id
   instance_type              = var.instance_type
   security_group_ids         = [module.security_group.security_group_id]
