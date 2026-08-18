@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: saas-infra/terraform/compute/envs/dev
+        working-directory: terraform/compute/envs/dev
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
