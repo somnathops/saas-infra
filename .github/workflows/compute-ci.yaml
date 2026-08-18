@@ -31,6 +31,13 @@ jobs:
           TENANT_ID=$(uuidgen | tr '[:upper:]' '[:lower:]' | cut -d '-' -f1)
           echo "TENANT_ID=$TENANT_ID" >> $GITHUB_OUTPUT
           echo "Generated Tenant ID: $TENANT_ID"
+          
+      - name: configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
 
       - name: Terraform Init
         run: |
