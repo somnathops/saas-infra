@@ -1,34 +1,34 @@
 variable "region" {
-    description = "The AWS region to deploy resources in."
-    type        = string
+  description = "The AWS region to deploy resources in."
+  type        = string
 }
 
 variable "tenant_id" {
-    description = "Id of the tenant for which the resources are being created"
-    type        = string  
+  description = "Id of the tenant for which the resources are being created"
+  type        = string
 }
 variable "instance_type" {
-    description = "The type of instance to use for the EC2 instance."
-    type        = string
+  description = "The type of instance to use for the EC2 instance."
+  type        = string
 }
 
 variable "security_group_ids" {
-    description = "A list of security group IDs to associate with the EC2 instance."
-    type        = list(string)
+  description = "A list of security group IDs to associate with the EC2 instance."
+  type        = list(string)
 }
 
 variable "key_name" {
-    description = "The name of the key pair to use for the EC2 instance."
-    type        = string
+  description = "The name of the key pair to use for the EC2 instance."
+  type        = string
 }
 
 variable "associate_public_ip_address" {
-    description = "Whether to associate a public IP address with the EC2 instance."
-    type        = bool
-    default     = false
+  description = "Whether to associate a public IP address with the EC2 instance."
+  type        = bool
+  default     = false
 }
 
 variable "tags" {
-    description = "A map of tags to assign to the EC2 instance."
-    type        = map(string)
+  description = "A map of tags to assign to the EC2 instance."
+  type        = map(string)
 }
