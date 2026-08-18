@@ -22,7 +22,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: /terraform/networking/envs/dev
+        working-directory: terraform/networking/envs/dev
 
     steps:
       - name: Checkout repository
@@ -43,13 +43,17 @@ jobs:
           aws-region: ap-south-1
 
       - name: Terraform Init
+        working-directory: terraform/networking/envs/dev
         run: terraform init
 
       - name: Terraform Format Check
+        working-directory: terraform/networking
         run: terraform fmt -check -recursive
 
       - name: Terraform Validate
+        working-directory: terraform/networking/envs/dev
         run: terraform validate
 
       - name: Terraform Plan
+        working-directory: terraform/networking/envs/dev
         run: terraform plan -input=false -no-color
