@@ -5,15 +5,15 @@ on:
     branches:
       - main
     paths:
-      - 'networking/**'
-      - 'modules/vpc/**'
+      - 'terraform/networking/**'
+      - 'terraform/modules/vpc/**'
 
   pull_request:
     branches:
       - main
     paths:
-      - 'networking/**'
-      - 'modules/vpc/**'
+      - 'terraform/networking/**'
+      - 'terraform/modules/vpc/**'
   workflow_dispatch:
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: networking/envs/dev
+        working-directory: /terraform/networking/envs/dev
 
     steps:
       - name: Checkout repository
