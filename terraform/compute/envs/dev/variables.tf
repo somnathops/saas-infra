@@ -26,7 +26,7 @@ variable "associate_public_ip_address" {
 variable "tags" {
   description = "A map of tags to assign to the EC2 instance."
   type        = map(string)
-  default     = {
+  default = {
     ManagedBy = "Terraform"
   }
 }
