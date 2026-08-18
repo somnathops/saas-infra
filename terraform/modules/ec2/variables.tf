@@ -27,6 +27,7 @@ variable "associate_public_ip_address" {
 variable "security_group_ids" {
   description = "A list of security group IDs to associate with the EC2 instance."
   type        = list(string)
+  default     = []
 }
 
 variable "tags" {

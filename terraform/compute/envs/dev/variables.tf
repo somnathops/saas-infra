@@ -23,6 +23,11 @@ variable "associate_public_ip_address" {
   default     = false
 }
 
+variable "tenant_name" {
+  description = "Name of the tenant for which the resources are being created"
+  type        = string
+}
+
 variable "tags" {
   description = "A map of tags to assign to the EC2 instance."
   type        = map(string)
