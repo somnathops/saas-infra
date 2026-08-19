@@ -14,8 +14,11 @@ on:
       region:
         description: 'AWS Region required for creation'
         required: false
-        type: string
-
+        type: choice
+        options:
+        - us-east-1
+        - eu-central-1
+        
       instance_type:
         description: 'EC2 Instance Type required for creation'
         required: false
