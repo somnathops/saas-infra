@@ -84,8 +84,7 @@ jobs:
             -no-color \
             -var="region=${{ inputs.region }}" \
             -var="instance_type=${{ inputs.instance_type }}" \
-            -var="tenant_id=${{ steps.tenant.outputs.tenant_id }}" \
-            -var="tenant_name=${{ steps.tenant.outputs.tenant_id }}"
+            -var="tenant_id=${{ steps.tenant.outputs.tenant_id }}"
 
       - name: Terraform Apply
         run: |
@@ -94,8 +93,7 @@ jobs:
             -auto-approve \
             -var="region=${{ inputs.region }}" \
             -var="instance_type=${{ inputs.instance_type }}" \
-            -var="tenant_id=${{ steps.tenant.outputs.tenant_id }}" \
-            -var="tenant_name=${{ steps.tenant.outputs.tenant_id }}"
+            -var="tenant_id=${{ steps.tenant.outputs.tenant_id }}"
 
   Delete:
     if: inputs.actions == 'Delete'
