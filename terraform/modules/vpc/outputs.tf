@@ -12,6 +12,12 @@ output "public_subnet_ids" {
   }
 }
 
+output "private_subnet_ids" {
+  value = {
+    for az, subnet in aws_subnet.private : az => subnet.id
+  }
+}
+
 output "public_subnet_cidrs" {
   value = {
     for az, subnet in aws_subnet.public : az => subnet.cidr_block

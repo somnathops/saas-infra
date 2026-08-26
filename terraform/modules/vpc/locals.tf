@@ -13,4 +13,9 @@ locals {
     az => cidrsubnet(var.vpc_cidr, local.newbits, index)
   }
 
+  private_subnets = {
+    for index, az in local.azs :
+    az => cidrsubnet(var.vpc_cidr, local.newbits, length(local.azs) + index)
+  }
+
 }
