@@ -11,6 +11,14 @@ module "security_group" {
       cidr_ipv4 = "122.168.71.80/32"
     },
   ]
+  egress_rules = [
+    {
+      from_port = 0
+      to_port   = 0
+      protocol  = "-1"
+      cidr_ipv4 = "0.0.0.0/0"
+    }
+  ]
 }
 
 resource "random_integer" "az" {
