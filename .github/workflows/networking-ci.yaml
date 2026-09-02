@@ -5,15 +5,15 @@ on:
     branches:
       - main
     paths:
-      - 'terraform/networking/**'
-      - 'terraform/modules/vpc/**'
+      - 'terraform/aws/base-infra/envs/dev/networking/**'
+      - 'terraform/aws/modules/vpc/**'
 
   pull_request:
     branches:
       - main
     paths:
-      - 'terraform/networking/**'
-      - 'terraform/modules/vpc/**'
+      - 'terraform/aws/base-infra/envs/dev/networking/**'
+      - 'terraform/aws/modules/vpc/**'
   workflow_dispatch:
 
 jobs:

@@ -1,5 +1,5 @@
 module "security_group" {
-  source      = "../../../modules/security-group"
+  source      = "../../../../modules/security-group"
   description = "Security group for dev environment"
   vpc_id      = local.vpc_id
 
@@ -19,7 +19,7 @@ resource "random_integer" "az" {
 }
 
 module "ec2" {
-  source                      = "../../../modules/ec2"
+  source                      = "../../../../modules/ec2"
   ami_id                      = data.aws_ami.ubuntu.id
   subnet_id                   = local.subnet_id
   instance_type               = var.instance_type

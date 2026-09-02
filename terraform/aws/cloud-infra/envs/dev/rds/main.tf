@@ -1,12 +1,12 @@
 module "rds_security-group" {
-  source = "../../../modules/security-group"
+  source = "../../../../modules/security-group"
   vpc_id = local.vpc_id
   description = "Security group for RDS PostgresSQL"
   ingress_rules = []
 }
 
 module "rds" {
-  source = "../../../modules/rds"
+  source = "../../../../modules/rds"
 
   name = "daily-task-db"
 

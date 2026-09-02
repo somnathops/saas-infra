@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: terraform/compute/envs/dev
+        working-directory: terraform/aws/cloud-infra/envs/dev/compute
     steps:
       - name: Validate required inputs
         working-directory: .
@@ -103,7 +103,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: terraform/compute/envs/dev
+        working-directory: terraform/aws/cloud-infra/envs/dev/compute
     steps:
       - name: Validate required inputs
         working-directory: .

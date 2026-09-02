@@ -3,7 +3,7 @@ module "vpc_use1" {
     aws = aws.use1
   }
 
-  source = "../../../modules/vpc"
+  source = "../../../../modules/vpc"
 
   vpc_name      = var.regions["us-east-1"].vpc_name
   vpc_cidr      = var.regions["us-east-1"].vpc_cidr
@@ -17,7 +17,7 @@ module "vpc_euc1" {
     aws = aws.euc1
   }
 
-  source = "../../../modules/vpc"
+  source = "../../../../modules/vpc"
 
   vpc_name      = var.regions["eu-central-1"].vpc_name
   vpc_cidr      = var.regions["eu-central-1"].vpc_cidr
