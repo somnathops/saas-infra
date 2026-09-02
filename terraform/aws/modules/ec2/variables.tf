@@ -30,6 +30,20 @@ variable "security_group_ids" {
   default     = []
 }
 
+variable "root_block_device" {
+  description = "Configuration block for the root block device of the EC2 instance."
+  type = object({
+    volume_size           = number
+    volume_type           = string
+    delete_on_termination = bool
+  })
+  default = {
+    volume_size           = 30
+    volume_type           = "gp2"
+    delete_on_termination = true
+  }
+}
+
 variable "tags" {
   description = "A map of tags to assign to the EC2 instance."
   default = {

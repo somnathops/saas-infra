@@ -26,6 +26,7 @@ module "ec2" {
   security_group_ids          = [module.security_group.security_group_id]
   key_name                    = var.key_name
   associate_public_ip_address = var.associate_public_ip_address
+  root_block_device           = var.root_block_device
   tags                        = merge(var.tags, { Name = "${var.tenant_id}" })
 
 }
