@@ -5,10 +5,10 @@ module "security_group" {
 
   ingress_rules = [
     {
-      from_port = 22
-      to_port   = 22
-      protocol  = "tcp"
-      cidr_ipv4 = "122.168.71.80/32"
+      from_port = 0
+      to_port   = 0
+      protocol  = "-1"
+      cidr_ipv4 = "0.0.0.0/0"
     },
   ]
   egress_rules = [
